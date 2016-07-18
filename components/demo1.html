@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue componments</title>
+</head>
+<body>
+    <div id="app">
+        <greeting message="A"></greeting>
+        <greeting message="a"></greeting>
+        <greeting message="b"></greeting>
+    </div>
+
+    <tempalte id="greeting-template">
+        <h1>welcome to coligo!</h1>
+        <button>login</button>
+        <button>signup</button>
+        <a href="https://www.baidu.com">baidu</a>
+    </tempalte>
+
+    <script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+    <script>
+        Vue.component('greeting', {
+            template: '<h1>{{message}}</h1>',
+            props: {
+                message: {
+                    type: String,
+                    required: true
+                }
+            }
+        });
+
+        var vm = new Vue({
+            el: '#app'
+        });
+    </script>
+
+</body>
+</html>

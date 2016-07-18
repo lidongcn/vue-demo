@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if and v-show</title>
+</head>
+<body>
+<!--Conditional Rendering with v-if and v-show-->
+
+<div id="vue-instance">
+
+    <div v-show="isLoggedIn">
+        welcome to xian!
+        <button @click="login" type="submit">logout</button>
+    </div>
+
+    <div v-else>
+        <input type="text" placeholder="username">
+        <input type="password" placeholder="password">
+        <button @click="login" type="submit">login</button>
+    </div>
+
+</div>
+
+<script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+
+<script>
+    var vm = new Vue({
+        el:'#vue-instance',
+        data: {
+            isLoggedIn: false
+        },
+        methods: {
+            login: function() {
+                this.isLoggedIn = !this.isLoggedIn;
+            }
+        }
+    });
+</script>
+</body>
+</html>

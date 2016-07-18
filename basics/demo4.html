@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--comouted properties-->
+
+<div id="vue-instance">
+    <input type="number" v-model="x">
+    <p>result: {{ doubleX }}</p>
+</div>
+
+<script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#vue-instance',
+        data: {
+            x: 1
+        },
+        computed: {
+            doubleX: function() {
+                return this.x*2;
+            }
+        }
+    })
+</script>
+</body>
+</html>

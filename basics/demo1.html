@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="vue-instance">
+    Enter a greeting: <input type="text" v-model="greeting">
+    <!--<p>{{ $data | json}}</p>-->
+    <p>{{ greeting }}</p>
+
+    <button @click="sayHello">btn</button>
+</div>
+
+<script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+<script>
+
+    var vm = new Vue({
+        el: '#vue-instance',
+        data: {
+            greeting: 'hello VueJs!'
+        },
+        methods: {
+            sayHello: function ( ) {
+                alert(this.greeting);
+            }
+        }
+    });
+</script>
+</body>
+</html>
