@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>terminal directive example</title>
+    <script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.validator/2.1.4/vue-validator.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <validator name="validation">
+        <form novalidate>
+          <div class="username">
+            <label for="username">username:</label>
+            <input id="username" type="text" 
+                   @valid="this.enable = true" 
+                   @invalid="this.enable = false" 
+                   v-validate:username="['required']">
+          </div>
+          <div v-if="enable" class="password">
+            <label for="password">password:</label>
+            <input id="password" type="password" v-validate:password="{
+              required: { rule: true }, minlength: { rule: 8 }
+            }"/>
+          <div>
+        </form>
+      </validator>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          enable: true
+        }
+      })
+    </script>
+  </body>
+</html>

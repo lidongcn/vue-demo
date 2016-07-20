@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:v-validate="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <title>validation custom classes example</title>
+    <script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.validator/2.1.4/vue-validator.min.js"></script>
+  </head>
+  <body>
+
+    <div id="app">
+      <validator name="validation1" 
+                 :classes="{ touched: 'touched-validator', dirty: 'dirty-validator' }"
+                 @valid="onValidation" 
+                 @invalid="onValidation">
+
+        <div class="username">
+          <label for="username">username:</label>
+          <input id="username" 
+                 type="text" 
+                 :classes="{ valid: 'valid-username', invalid: 'invalid-username' }" 
+                 v-validate:username="{ required: { rule: true, message: 'required you name !!' }
+          }">
+          <span>{{usernameClasses}}</span>
+        </div>
+      </validator>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          usernameClasses: ''
+        },
+        ready: function () {
+          this._username = document.getElementById('username')
+          this.usernameClasses = this._username.className
+        },
+        methods: {
+          onValidation: function () {
+            if (this._username) {
+              this.usernameClasses = this._username.className
+            }
+          }
+        }
+      })
+    </script>
+
+  </body>
+</html>
