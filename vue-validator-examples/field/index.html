@@ -27,13 +27,19 @@
             label: 'username',
             name: 'username',
             placeholder: 'input your username',
-            validate: { required: true, maxlength: 16 }
+            validate: {
+              required: true,
+              maxlength: 16
+            }
           }, {
             id: 'message',
             label: 'message',
             name: 'message',
             placeholder: 'input your message',
-            validate: { required: true, minlength: 8 }
+            validate: {
+              required: true,
+              minlength: 8
+            }
           }]
         }
       })
