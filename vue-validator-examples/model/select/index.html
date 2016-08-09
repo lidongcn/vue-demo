@@ -28,14 +28,14 @@
             <p v-if="$validation1.lang.required">Required !!</p>
             <p v-if="$validation1.lang.maxlength">Sorry, The maximum is 3 languages !!</p>
           </div>
-          <pre>$data: {{ $data | json }}</pre>
+          <!--<pre>$data: {{ $data | json }}</pre>-->
         </form>
       </validator>
     </div>
     <script>
       new Vue({
-        el: '#app',
-        data: { langs: ['javascript', 'lua', 'go'] }
+        el: '#app'
+//        data: { langs: ['javascript', 'lua', 'go'] }
       })
     </script>
   </body>

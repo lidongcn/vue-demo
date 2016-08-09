@@ -33,7 +33,7 @@
                 <p>{{error.message}}</p>
               </li>
             </ul>
-            <pre>$data: {{ $data | json }}</pre>
+            <!--<pre>$data: {{ $data | json }}</pre>-->
           </fieldset>
         </form>
       </validator>
@@ -43,16 +43,21 @@
         el: '#app',
         data: { selected: [] },
         computed: {
-          requiredErrorMsg: function () {
-            return 'Required fruit !!'
-          },
-          minlengthErrorMsg: function () {
-            return 'Please chose at least 1 fruit !!'
-          },
-          maxlengthErrorMsg: function () {
-            return 'Please chose at most 2 fruits !!'
-          }
+            requiredErrorMsg: function () {
+              return 'required fruit !!'
+            }
         }
+//        computed: {
+//          requiredErrorMsg: function () {
+//            return 'Required fruit !!'
+//          },
+//          minlengthErrorMsg: function () {
+//            return 'Please chose at least 1 fruit !!'
+//          },
+//          maxlengthErrorMsg: function () {
+//            return 'Please chose at most 2 fruits !!'
+//          }
+//        }
       })
     </script>
   </body>

@@ -1,70 +1,155 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>binding example</title>
     <script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/vue.validator/2.1.4/vue-validator.min.js"></script>
-  </head>
-  <body>
-    <div id="app">
-      <!--<validator name="validation">-->
-        <!--<form novalidate>-->
-          <!--<input type="text" v-validate:comment="{ minlength: 16, maxlength: 128 }">-->
-          <!--<div>-->
-            <!--<span v-show="$validation.comment.minlength">Your comment is too short.</span>-->
-            <!--<span v-show="$validation.comment.maxlength">Your comment is too long.</span>-->
-          <!--</div>-->
-          <!--<input type="submit" value="send" v-if="$validation.valid">-->
-        <!--</form>-->
-      <!--</validator>-->
+</head>
+<body>
+<div id="app">
+    <!--<validator name="validation">-->
+    <!--<form novalidate>-->
+    <!--<input type="text" v-validate:comment="{ minlength: 16, maxlength: 128 }">-->
+    <!--<div>-->
+    <!--<span v-show="$validation.comment.minlength">Your comment is too short.</span>-->
+    <!--<span v-show="$validation.comment.maxlength">Your comment is too long.</span>-->
+    <!--</div>-->
+    <!--<input type="submit" value="send" v-if="$validation.valid">-->
+    <!--</form>-->
+    <!--</validator>-->
 
 
-
-      <!--v-validate指令中的字段名可以使用驼峰命名发-->
-      <!--<validator name="validation">-->
-        <!--<form novalidate>-->
-          <!--<input type="text" v-validate:user-name="{ minlength: 16 }">-->
-          <!--<div>-->
-            <!--<span v-if="$validation.userName.minlength">Your user name is too short.</span>-->
-          <!--</div>-->
-        <!--</form>-->
-      <!--</validator>-->
-
-
-      <!--也可以使用field属性来指定字段名-->
-      <!--<validator name="validation">-->
-        <!--<form novalidate>-->
-          <!--<p class="validate-field" v-for="field in fields">-->
-            <!--<label :for="field.id">{{field.label}}</label>-->
-            <!--<input type="text" :id="field.id" :placeholder="field.placeholder" :field="field.name" v-validate="field.validate">-->
-          <!--</p>-->
-          <!--<pre>{{ $validation | json }}</pre>-->
-        <!--</form>-->
-      <!--</validator>-->
+    <!--v-validate指令中的字段名可以使用驼峰命名发-->
+    <!--<validator name="validation">-->
+    <!--<form novalidate>-->
+    <!--<input type="text" v-validate:user-name="{ minlength: 16 }">-->
+    <!--<div>-->
+    <!--<span v-if="$validation.userName.minlength">Your user name is too short.</span>-->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</validator>-->
 
 
+    <!--也可以使用field属性来指定字段名-->
+    <!--<validator name="validation">-->
+    <!--<form novalidate>-->
+    <!--<p class="validate-field" v-for="field in fields">-->
+    <!--<label :for="field.id">{{field.label}}</label>-->
+    <!--<input type="text" :id="field.id" :placeholder="field.placeholder" :field="field.name" v-validate="field.validate">-->
+    <!--</p>-->
+    <!--<pre>{{ $validation | json }}</pre>-->
+    <!--</form>-->
+    <!--</validator>-->
 
-    </div>
-    <script>
-      new Vue({
+    <!--支持把验证字段分组 使用group-->
+    <!--<validator name="validation1" :groups="['user', 'password']">-->
+    <!--username: <input type="text" group="user" v-validate:username="['required']"><br />-->
+    <!--password: <input type="password" group="password" v-validate:password1="{ minlength: 8, required: true }"/><br />-->
+    <!--password (confirm): <input type="password" group="password" v-validate:password2="{ minlength: 8, required: true }"/>-->
+    <!--<div class="user">-->
+    <!--<span v-if="$validation1.user.invalid">Invalid yourname !!</span>-->
+    <!--</div>-->
+    <!--<div class="password">-->
+    <!--<span v-if="$validation1.password.invalid">Invalid password input !!</span>-->
+    <!--</div>-->
+    <!--</validator>-->
+
+    <!--可以在v-for指令中使用错误消息:-->
+    <!--这样使用数据属性或者计算属性来制定验证规则比使用内联验证规则更加整洁-->
+    <!--<validator name="validation1">-->
+        <!--<div class="username">-->
+            <!--<label for="username">username:</label>-->
+            <!--<input id="username" type="text" v-validate:username="{required: { rule: true, message: 'required you name !!' }}">-->
+            <!--&lt;!&ndash;<span v-if="$validation1.username.required">{{ $validation1.username.required }}</span>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="password">-->
+            <!--<label for="password">password:</label>-->
+            <!--<input id="password" type="password" v-validate:password="{required: { rule: true, message: 'required you password !!' },minlength: { rule: 8, message: 'your password short too !!' }}" />-->
+            <!--&lt;!&ndash;<span v-if="$validation1.password.required">{{ $validation1.password.required }}</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span v-if="$validation1.password.minlength">{{ $validation1.password.minlength }}</span>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="errors">-->
+            <!--<ul>-->
+                <!--<li v-for="error in $validation1.errors">-->
+                    <!--<p>{{error.field}}:{{error.message}}</p>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</validator>-->
+
+    <!--非常易用的 validator-errors 组件来枚举错误消息-->
+    <!--<validator name="validation1">-->
+        <!--<div class="username">-->
+            <!--<label for="username">username:</label>-->
+            <!--<input id="username" type="text" v-validate:username="{-->
+      <!--required: { rule: true, message: 'required you name !!' }-->
+    <!--}">-->
+        <!--</div>-->
+        <!--<div class="password">-->
+            <!--<label for="password">password:</label>-->
+            <!--<input id="password" type="password" v-validate:password="{-->
+      <!--required: { rule: true, message: 'required you password !!' },-->
+      <!--minlength: { rule: 8, message: 'your password short too !!' }-->
+    <!--}"/>-->
+        <!--</div>-->
+        <!--<div class="errors">-->
+            <!--<validator-errors :validation="$validation1"></validator-errors>-->
+        <!--</div>-->
+    <!--</validator>-->
+
+
+    <!--自定义validator-errors默认的错误消息格式-->
+    <!--<validator name="validation1">-->
+        <!--<div class="username">-->
+            <!--<label for="username">username:</label>-->
+            <!--<input id="username" type="text" v-validate:username="{-->
+        <!--required: { rule: true, message: 'required you name !!' }-->
+      <!--}">-->
+        <!--</div>-->
+        <!--<div class="password">-->
+            <!--<label for="password">password:</label>-->
+            <!--<input id="password" type="password" v-validate:password="{-->
+        <!--required: { rule: true, message: 'required you password !!' },-->
+        <!--minlength: { rule: 8, message: 'your password short too !!' }-->
+      <!--}"/>-->
+        <!--</div>-->
+        <!--<div class="errors">-->
+            <!--<validator-errors :component="'custom-error'" :validation="$validation1"></validator-errors>-->
+        <!--</div>-->
+    <!--</validator>-->
+
+    <!--使用partial作为模板-->
+    <validator name="validation1">
+        <div class="username">
+            <label for="username">username:</label>
+            <input id="username" type="text" v-validate:username="{
+        required: { rule: true, message: 'required you name !!' }
+      }">
+        </div>
+        <div class="password">
+            <label for="password">password:</label>
+            <input id="password" type="password" v-validate:password="{
+        required: { rule: true, message: 'required you password !!' },
+        minlength: { rule: 8, message: 'your password short too !!' }
+      }"/>
+        </div>
+        <div class="errors">
+            <validator-errors partial="myErrorTemplate" :validation="$validation1">
+            </validator-errors>
+        </div>
+    </validator>
+
+</div>
+<script>
+    Vue.partial('myErrorTemplate', '<p>{{field}}: {{validator}}: {{message}}</p>')
+    //    Vue.component('custom-error', {
+//        props: ['field', 'validator', 'message'],
+//        template: '<p class="error-{{field}}-{{validator}}">{{message}}</p>'
+//    });
+    var vm = new Vue({
         el: '#app'
-//        data: {
-//          fields: [{
-//            id: 'username',
-//            label: 'username',
-//            name: 'username',
-//            placeholder: 'input your username',
-//            validate: { required: true, maxlength: 16 }
-//          }, {
-//            id: 'message',
-//            label: 'message',
-//            name: 'message',
-//            placeholder: 'input your message',
-//            validate: { required: true, minlength: 8 }
-//          }]
-//        }
-      })
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>
