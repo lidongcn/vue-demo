@@ -17,9 +17,7 @@
           <div class="username">
             <label for="username">username:</label>
             <input id="username" type="text" 
-              detect-change="off" detect-blur="off" v-validate:username="{
-              required: { rule: true, message: 'required you name !!' }
-            }" />
+              detect-change="off" detect-blur="off" v-validate:username="{required: { rule: true, message: 'required you name !!' }}" />
           </div>
           <div class="password">
             <label for="password">password:</label>
@@ -37,9 +35,9 @@
               confirm: { rule: password, message: 'your confirm password incorrect !!' }
             }" />
           </div>
-          <div class="errors" v-if="$validation.touched">
-            <validator-errors :validation="$validation"></validator-errors>
-          </div>
+          <!--<div class="errors" v-if="$validation.touched">-->
+            <!--<validator-errors :validation="$validation"></validator-errors>-->
+          <!--</div>-->
           <input type="submit" value="register" />
         </form>
       </validator>
@@ -57,10 +55,12 @@
         },
         methods: {
           onSubmit: function (e) {
+            console.log(this.$validate);
             // validate manually
             var self = this;
             this.$validate(true, function () {
               if (self.$validation.invalid) {
+                console.log(111);
                 e.preventDefault()
               }
             })
