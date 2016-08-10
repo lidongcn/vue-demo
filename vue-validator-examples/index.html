@@ -58,97 +58,184 @@
     <!--可以在v-for指令中使用错误消息:-->
     <!--这样使用数据属性或者计算属性来制定验证规则比使用内联验证规则更加整洁-->
     <!--<validator name="validation1">-->
-        <!--<div class="username">-->
-            <!--<label for="username">username:</label>-->
-            <!--<input id="username" type="text" v-validate:username="{required: { rule: true, message: 'required you name !!' }}">-->
-            <!--&lt;!&ndash;<span v-if="$validation1.username.required">{{ $validation1.username.required }}</span>&ndash;&gt;-->
-        <!--</div>-->
-        <!--<div class="password">-->
-            <!--<label for="password">password:</label>-->
-            <!--<input id="password" type="password" v-validate:password="{required: { rule: true, message: 'required you password !!' },minlength: { rule: 8, message: 'your password short too !!' }}" />-->
-            <!--&lt;!&ndash;<span v-if="$validation1.password.required">{{ $validation1.password.required }}</span>&ndash;&gt;-->
-            <!--&lt;!&ndash;<span v-if="$validation1.password.minlength">{{ $validation1.password.minlength }}</span>&ndash;&gt;-->
-        <!--</div>-->
-        <!--<div class="errors">-->
-            <!--<ul>-->
-                <!--<li v-for="error in $validation1.errors">-->
-                    <!--<p>{{error.field}}:{{error.message}}</p>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
+    <!--<div class="username">-->
+    <!--<label for="username">username:</label>-->
+    <!--<input id="username" type="text" v-validate:username="{required: { rule: true, message: 'required you name !!' }}">-->
+    <!--&lt;!&ndash;<span v-if="$validation1.username.required">{{ $validation1.username.required }}</span>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div class="password">-->
+    <!--<label for="password">password:</label>-->
+    <!--<input id="password" type="password" v-validate:password="{required: { rule: true, message: 'required you password !!' },minlength: { rule: 8, message: 'your password short too !!' }}" />-->
+    <!--&lt;!&ndash;<span v-if="$validation1.password.required">{{ $validation1.password.required }}</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span v-if="$validation1.password.minlength">{{ $validation1.password.minlength }}</span>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div class="errors">-->
+    <!--<ul>-->
+    <!--<li v-for="error in $validation1.errors">-->
+    <!--<p>{{error.field}}:{{error.message}}</p>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
     <!--</validator>-->
 
     <!--非常易用的 validator-errors 组件来枚举错误消息-->
     <!--<validator name="validation1">-->
-        <!--<div class="username">-->
-            <!--<label for="username">username:</label>-->
-            <!--<input id="username" type="text" v-validate:username="{-->
-      <!--required: { rule: true, message: 'required you name !!' }-->
+    <!--<div class="username">-->
+    <!--<label for="username">username:</label>-->
+    <!--<input id="username" type="text" v-validate:username="{-->
+    <!--required: { rule: true, message: 'required you name !!' }-->
     <!--}">-->
-        <!--</div>-->
-        <!--<div class="password">-->
-            <!--<label for="password">password:</label>-->
-            <!--<input id="password" type="password" v-validate:password="{-->
-      <!--required: { rule: true, message: 'required you password !!' },-->
-      <!--minlength: { rule: 8, message: 'your password short too !!' }-->
+    <!--</div>-->
+    <!--<div class="password">-->
+    <!--<label for="password">password:</label>-->
+    <!--<input id="password" type="password" v-validate:password="{-->
+    <!--required: { rule: true, message: 'required you password !!' },-->
+    <!--minlength: { rule: 8, message: 'your password short too !!' }-->
     <!--}"/>-->
-        <!--</div>-->
-        <!--<div class="errors">-->
-            <!--<validator-errors :validation="$validation1"></validator-errors>-->
-        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="errors">-->
+    <!--<validator-errors :validation="$validation1"></validator-errors>-->
+    <!--</div>-->
     <!--</validator>-->
 
 
     <!--自定义validator-errors默认的错误消息格式-->
     <!--<validator name="validation1">-->
-        <!--<div class="username">-->
-            <!--<label for="username">username:</label>-->
-            <!--<input id="username" type="text" v-validate:username="{-->
-        <!--required: { rule: true, message: 'required you name !!' }-->
-      <!--}">-->
-        <!--</div>-->
-        <!--<div class="password">-->
-            <!--<label for="password">password:</label>-->
-            <!--<input id="password" type="password" v-validate:password="{-->
-        <!--required: { rule: true, message: 'required you password !!' },-->
-        <!--minlength: { rule: 8, message: 'your password short too !!' }-->
-      <!--}"/>-->
-        <!--</div>-->
-        <!--<div class="errors">-->
-            <!--<validator-errors :component="'custom-error'" :validation="$validation1"></validator-errors>-->
-        <!--</div>-->
+    <!--<div class="username">-->
+    <!--<label for="username">username:</label>-->
+    <!--<input id="username" type="text" v-validate:username="{-->
+    <!--required: { rule: true, message: 'required you name !!' }-->
+    <!--}">-->
+    <!--</div>-->
+    <!--<div class="password">-->
+    <!--<label for="password">password:</label>-->
+    <!--<input id="password" type="password" v-validate:password="{-->
+    <!--required: { rule: true, message: 'required you password !!' },-->
+    <!--minlength: { rule: 8, message: 'your password short too !!' }-->
+    <!--}"/>-->
+    <!--</div>-->
+    <!--<div class="errors">-->
+    <!--<validator-errors :component="'custom-error'" :validation="$validation1"></validator-errors>-->
+    <!--</div>-->
     <!--</validator>-->
 
     <!--使用partial作为模板-->
-    <validator name="validation1">
-        <div class="username">
-            <label for="username">username:</label>
-            <input id="username" type="text" v-validate:username="{
-        required: { rule: true, message: 'required you name !!' }
-      }">
-        </div>
-        <div class="password">
-            <label for="password">password:</label>
-            <input id="password" type="password" v-validate:password="{
-        required: { rule: true, message: 'required you password !!' },
-        minlength: { rule: 8, message: 'your password short too !!' }
-      }"/>
-        </div>
-        <div class="errors">
-            <validator-errors partial="myErrorTemplate" :validation="$validation1">
-            </validator-errors>
-        </div>
-    </validator>
+    <!--<validator name="validation1">-->
+    <!--<div class="username">-->
+    <!--<label for="username">username:</label>-->
+    <!--<input id="username" type="text" v-validate:username="{-->
+    <!--required: { rule: true, message: 'required you name !!' }-->
+    <!--}">-->
+    <!--</div>-->
+    <!--<div class="password">-->
+    <!--<label for="password">password:</label>-->
+    <!--<input id="password" type="password" v-validate:password="{-->
+    <!--required: { rule: true, message: 'required you password !!' },-->
+    <!--minlength: { rule: 8, message: 'your password short too !!' }-->
+    <!--}"/>-->
+    <!--</div>-->
+    <!--<div class="errors">-->
+    <!--<validator-errors partial="myErrorTemplate" :validation="$validation1">-->
+    <!--</validator-errors>-->
+    <!--</div>-->
+    <!--</validator>-->
+
+    <!--<validator name="validation">-->
+    <!--<div class="username">-->
+    <!--<label for="username">username:</label>-->
+    <!--<input id="username" type="text" v-model="username" v-validate:username="{-->
+    <!--required: { rule: true, message: 'required you name !!' }-->
+    <!--}">-->
+    <!--</div>-->
+    <!--<div class="old">-->
+    <!--<label for="old">old password:</label>-->
+    <!--<input id="old" type="password" v-model="passowrd.old" v-validate:old="{-->
+    <!--required: { rule: true, message: 'required you old password !!' }-->
+    <!--}"/>-->
+    <!--</div>-->
+    <!--<div class="new">-->
+    <!--<label for="new">new password:</label>-->
+    <!--<input id="new" type="password" v-model="password.new" v-validate:new="{-->
+    <!--required: { rule: true, message: 'required you new password !!' },-->
+    <!--minlength: { rule: 8, message: 'your new password short too !!' }-->
+    <!--}"/>-->
+    <!--</div>-->
+    <!--<div class="confirm">-->
+    <!--<label for="confirm">confirm password:</label>-->
+    <!--<input id="confirm" type="password" v-validate:confirm="{-->
+    <!--required: { rule: true, message: 'required you confirm password !!' },-->
+    <!--confirm: { rule: passowd.new, message: 'your confirm password incorrect !!' }-->
+    <!--}"/>-->
+    <!--</div>-->
+    <!--<div class="errors">-->
+    <!--<validator-errors :validation="$validation"></validator-errors>-->
+    <!--</div>-->
+    <!--<button type="button" v-if="$validation.valid" @click.prevent="onSubmit">update</button>-->
+    <!--</validator>-->
+
+    <!--vue-validator 会在检测到表单元素(input, checkbox, select 等)上的 DOM 事件(input, blur, change)时自动验证。此时，可以使用 detect-change 和 detect-blur 属性：-->
+    <!--<validator name="validation">-->
+        <!--<form novalidate @submit="onSubmit">-->
+            <!--<h1>user registration</h1>-->
+            <!--<div class="username">-->
+                <!--<label for="username">username:</label>-->
+                <!--<input id="username" type="text"-->
+                       <!--detect-change="off" detect-blur="off" v-validate:username="{-->
+          <!--required: { rule: true, message: 'required you name !!' }-->
+        <!--}"/>-->
+            <!--</div>-->
+            <!--<div class="password">-->
+                <!--<label for="password">password:</label>-->
+                <!--<input id="password" type="password" v-model="password"-->
+                       <!--detect-change="off" detect-blur="off" v-validate:password="{-->
+          <!--required: { rule: true, message: 'required you new password !!' },-->
+          <!--minlength: { rule: 8, message: 'your new password short too !!' }-->
+        <!--}"/>-->
+            <!--</div>-->
+            <!--<div class="confirm">-->
+                <!--<label for="confirm">confirm password:</label>-->
+                <!--<input id="confirm" type="password"-->
+                       <!--detect-change="off" detect-blur="off" v-validate:confirm="{-->
+          <!--required: { rule: true, message: 'required you confirm password !!' },-->
+          <!--confirm: { rule: password, message: 'your confirm password incorrect !!' }-->
+        <!--}"/>-->
+            <!--</div>-->
+            <!--<div class="errors" v-if="$validation.touched">-->
+                <!--<validator-errors :validation="$validation"></validator-errors>-->
+            <!--</div>-->
+            <!--<input type="submit" value="register"/>-->
+        <!--</form>-->
+    <!--</validator>-->
 
 </div>
 <script>
-    Vue.partial('myErrorTemplate', '<p>{{field}}: {{validator}}: {{message}}</p>')
+
+    //    Vue.partial('myErrorTemplate', '<p>{{field}}: {{validator}}: {{message}}</p>')
     //    Vue.component('custom-error', {
-//        props: ['field', 'validator', 'message'],
-//        template: '<p class="error-{{field}}-{{validator}}">{{message}}</p>'
-//    });
+    //        props: ['field', 'validator', 'message'],
+    //        template: '<p class="error-{{field}}-{{validator}}">{{message}}</p>'
+    //    });
     var vm = new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            password: ''
+        },
+        validators: {
+            confirm: function (val, target) {
+                return val === target
+            }
+        },
+        methods: {
+            onSubmit: function (e) {
+                // validate manually
+                var self = this;
+                this.$validate(true, function () {
+                    if (self.$validation.invalid) {
+                        e.preventDefault()
+                    }
+                })
+            }
+        }
     });
 </script>
 </body>
